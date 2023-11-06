@@ -5,7 +5,7 @@
 LiquidCrystal lcd(13, 12, 11, 10, 9, 8); 
 
 //Measuring Current Using ACS712 
-int sensitivity = 185; // use 100 for 20A Module and 66 for 30A Module 
+int sensitivity = 185; //  185 5A MODÜL İÇİN 
 int adcvalue= 0; 
 int offsetvoltage = 2500;  //Sensor Callibration
 double Voltage = 0; //voltage measuring 
@@ -23,10 +23,10 @@ void setup()
 
 void loop()
 { 
-  // Measure The Votage ***********************************
-  // read the input on analog pin A1:
+  // Votage'ı ölçün ***********************************
+  //analog pin A1'deki girişi okuyun:
   int sensorValue = analogRead(A1);
-  // Convert the analog reading (which goes from 0 - 1023) to a voltage (0 - 5V):
+  // Analog okumayı (0 - 1023 arasında değişir) bir voltaja (0 - 5V) dönüştürün:
   float vol = (sensorValue * 5.0) / 1023.0;
 
   float voltage = vol * 5;
@@ -35,13 +35,13 @@ void loop()
   lcd.print(voltage);
   lcd.print("V");
 
-  // Measure The Current ***********************************
-  adcvalue = analogRead(A0);//reading the value from the analog pin A0
-  Voltage = (adcvalue / 1024.0) * 5000; // Gets you mV 
+  // Akımı Ölç ***********************************
+  adcvalue = analogRead(A0);//A0 analog pininden değerin okunması
+  Voltage = (adcvalue / 1024.0) * 5000; // Size mV kazandırır
   ecurrent = ((Voltage - offsetvoltage) / sensitivity); 
   lcd.setCursor(0,3); 
   lcd.print("  AKIM= "); 
   lcd.print(ecurrent); 
-  lcd.print("A"); //unit for the current to be measured 
+  lcd.print("A"); //Ölçülecek akımın birimi
   delay(2000);
 }
