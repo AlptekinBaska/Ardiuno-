@@ -7,7 +7,7 @@ LiquidCrystal lcd(2, 3, 4, 5, 6, 7);
 
 #define G_led 8 
 #define R_led 9 
-#define buzzer 13
+#define  motor 13
 
 float temp_c;
 
@@ -15,7 +15,7 @@ void setup(){
 
 pinMode(R_led,OUTPUT);
 pinMode(G_led,OUTPUT); 
-pinMode(buzzer,OUTPUT); 
+pinMode(motor,OUTPUT); 
 
 lcd.begin(16, 2); 
 
@@ -43,8 +43,8 @@ lcd.print("C  ");
 
 
     
-if(temp_c>1200){ 
-digitalWrite(buzzer, HIGH);
+if(temp_c>1000){ 
+digitalWrite(motor, HIGH);
 digitalWrite(G_led, LOW);   
 digitalWrite(R_led, HIGH); 
 delay(300);
@@ -55,7 +55,7 @@ digitalWrite(G_led, HIGH);
 digitalWrite(R_led, LOW); 
 }
   
-digitalWrite(buzzer, LOW);
+digitalWrite(motor, LOW);
 delay(500); 
 }
 
