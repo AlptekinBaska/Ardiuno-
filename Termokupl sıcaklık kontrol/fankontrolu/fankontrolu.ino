@@ -62,7 +62,7 @@ delay(500);
 double Thermocouple_read()
 {
 
-uint16_t v_out;
+uint32_t v_out;
 pinMode(CS, OUTPUT);
 pinMode(SO, INPUT);
 pinMode(SCK, OUTPUT);
