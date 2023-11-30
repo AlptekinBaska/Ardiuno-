@@ -9,7 +9,7 @@ int tempPin = A0;// sıcaklık Sensor Pin
 int HBSensor = 7;// hb sensörü pini
 int HBCount = 0;
 int HBCheck = 0;
-int TimeinSec = 0;
+int TimeinSec = 0; //saniye cinsinden zaman
 int HBperMin = 0;
 int HBStart = 2;
 int HBStartCheck = 0;
@@ -20,8 +20,10 @@ void setup()
   lcd.begin(20, 4);
   pinMode(HBSensor, INPUT);
   pinMode(HBStart, INPUT_PULLUP);
-  Timer1.initialize(800000); 
-  Timer1.attachInterrupt( timerIsr );
+  Timer1.initialize(800000); //mikrosaniye cinsinden. Sizin Kullandığınız donanıma göre zaman belirleyebilirsiniz
+
+  Timer1.attachInterrupt( sayac );//çalışacak fonksiyon ismi belirlendi
+
   lcd.clear();
   lcd.setCursor(0,0);
   lcd.print("SAGLIK IZLEME");
@@ -62,7 +64,7 @@ void loop()
         HBCheck = 0;   
       }
       
-      if(TimeinSec == 10)
+      if(TimeinSec == 10) //saniye cinsinden zaman
       {
           HBperMin = HBCount * 6;;
           HBStartCheck = 0;
@@ -76,7 +78,7 @@ void loop()
   }
 }
 
-void timerIsr()
+void sayac()
 {
   if(HBStartCheck == 1)
   {

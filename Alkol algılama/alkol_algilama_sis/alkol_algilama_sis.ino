@@ -7,7 +7,7 @@ int red = 13;
 int yellow = 12; 
 int green = 11; 
 SoftwareSerial SIM800l(2,3); // TX and RX respectively
-const int rs = 9, en = 8, d4 = 7, d5 = 6, d6 = 5, d7 = 4;
+const int rs = 9, en = 8, d4 = 7, d5 = 6, d6 = 5, d7 = 4;köö
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 void setup()
 {
