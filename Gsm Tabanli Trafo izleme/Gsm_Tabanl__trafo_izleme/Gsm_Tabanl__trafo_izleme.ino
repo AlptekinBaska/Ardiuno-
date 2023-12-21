@@ -1,4 +1,4 @@
- //FINAL YEAR PROJECT WORK
+
  
 #include "DHT.h"
 #include <Wire.h>
