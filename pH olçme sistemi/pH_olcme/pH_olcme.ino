@@ -3,7 +3,7 @@
 LiquidCrystal lcd(2, 3, 4, 5, 6, 7);
 const int red=11;
 const int mavi =12;
-#define SensorPin 0          // the pH meter Analog output is connected with the Arduino’s Analog
+#define SensorPin A0          // the pH meter Analog output is connected with the Arduino’s Analog
 unsigned long int avgValue;  //Sensör geri bildiriminin ortalama değerini saklayın
 float b;
 int buf[10],temp;
@@ -12,12 +12,13 @@ void setup()
   Serial.begin(9600);  
   Serial.println("Ready");    //Test the serial monitor
   pinMode(red,OUTPUT);
-  pinMode(mavi,OUTPUT);
+  pinMode(mavi,OUTPUT); 
+  pinMode(SensorPin,INPUT);
   lcd.begin(16,2);
   lcd.setCursor(0,0);
   lcd.print(" pH OLCER"); 
   
-  delay(2000); 
+  delay(500); 
   lcd.clear();
 }
 void loop()
