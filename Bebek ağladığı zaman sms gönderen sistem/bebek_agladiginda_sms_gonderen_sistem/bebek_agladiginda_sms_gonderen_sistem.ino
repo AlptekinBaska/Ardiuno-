@@ -6,7 +6,8 @@ LiquidCrystal lcd(13, 12, 11, 10, 9, 8);
 #include <SoftwareSerial.h>
 // defines pins numbers
 const int SensorPin = 2;
-const int LEDPin = 7;
+const int red = 7;
+const int yesil =6;
 
 void setup() 
 {
@@ -14,7 +15,7 @@ void setup()
   Serial.begin(9600); //Start the serial connection with the computer
   
   pinMode(SensorPin, INPUT); // Sets the Pin as an Input
-  pinMode(LEDPin, OUTPUT); // Sets the Pin as an OUTPUT
+  pinMode( red, OUTPUT); // Sets the Pin as an OUTPUT
   
   lcd.begin(20, 4); // set up the LCD's number of columns and rows:
   lcd.setCursor(0,0); // set the cursor position:
@@ -27,9 +28,9 @@ void loop()
 {
   if(digitalRead(SensorPin) == HIGH)
   {
-    digitalWrite(LEDPin,HIGH);
+    digitalWrite( red,HIGH);
     // Prints Message on the LCD
-    lcd.setCursor(0,3); 
+    lcd.setCursor(0,2); 
     lcd.print("  SES ALGILANDI    "); 
     delay(70);
     lcd.setCursor(0,3); 
@@ -44,6 +45,13 @@ void loop()
 
     delay(200);
     Serial.println((char)26); // End AT command with a ^Z, ASCII code 26,
+  }
+  else 
+  {
+    digitalWrite(yesil,HIGH);
+    lcd.clear();
+    lcd.print("SES YOK");
+    
   }
   
 }
